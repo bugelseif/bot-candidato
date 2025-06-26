@@ -21,7 +21,7 @@ def main():
     bot = WebBot()
 
     # Configura o modo headless para False
-    bot.headless = False
+    bot.headless = True
 
     # Define o navegador a ser utilizado
     bot.browser = Browser.FIREFOX
@@ -54,7 +54,7 @@ def main():
         bot.find_element(element_add, By.CSS_SELECTOR).click()
 
         # Obtendo a referência do Datapool
-        datapool = maestro.get_datapool(label="dados_candidatos")
+        datapool = maestro.get_datapool(label="label_datapool")
 
         # Enquanto houverem itens para serem processados
         while datapool.has_next():
@@ -143,7 +143,7 @@ def login(bot: WebBot, username, password):
     element_password = "div.oxd-form-row:nth-child(3) > div:nth-child(1) > div:nth-child(2) > input:nth-child(1)"
     element_button = ".oxd-button"
 
-    bot.wait(2000)
+    bot.wait(1000)
     bot.find_element(element_user, By.CSS_SELECTOR).send_keys(username)
     bot.find_element(element_password, By.CSS_SELECTOR).send_keys(password)
     bot.wait(1000)
@@ -172,39 +172,39 @@ def cadastro(bot: WebBot, candidato):
 
         if ultimo_nome:
             bot.find_element(element_first_name, By.CSS_SELECTOR).send_keys(primeiro_nome)
-            bot.wait(1000)
+            bot.wait(500)
 
             bot.find_element(element_middle_name, By.CSS_SELECTOR).send_keys(nome_meio)
-            bot.wait(1000)
+            bot.wait(500)
 
             bot.find_element(element_last_name, By.CSS_SELECTOR).send_keys(ultimo_nome[-1])
-            bot.wait(1000)
+            bot.wait(500)
         else:
             bot.find_element(element_first_name, By.CSS_SELECTOR).send_keys(primeiro_nome)
-            bot.wait(1000)
+            bot.wait(500)
             bot.find_element(element_last_name, By.CSS_SELECTOR).send_keys(ultimo_nome[-1])
-            bot.wait(1000)
+            bot.wait(500)
 
         bot.find_element(element_vacancy, By.CSS_SELECTOR).click()
-        bot.wait(1000)
+        bot.wait(500)
 
         options = bot.find_elements(element_options, By.CSS_SELECTOR)
         for option in options:
             if option.text == candidato['vacancy']:
                 option.click()
-                bot.wait(1000)
+                bot.wait(500)
                 break
 
         bot.find_element(element_email, By.CSS_SELECTOR).send_keys(candidato['email'])
-        bot.wait(1000)
+        bot.wait(500)
         bot.find_element(element_contact, By.CSS_SELECTOR).send_keys(candidato['contact_number'])
-        bot.wait(1000)
+        bot.wait(500)
         bot.find_element(element_keywords, By.CSS_SELECTOR).send_keys(candidato['keywords'])
-        bot.wait(1000)
+        bot.wait(500)
 
         # Salvar
         bot.find_element(element_save, By.CSS_SELECTOR).click()
-        bot.wait(1000)
+        bot.wait(500)
 
         # Validando se algum campo obrigatório não foi preenchido
         candidato_cadastrado = True

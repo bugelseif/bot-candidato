@@ -1,5 +1,5 @@
 # Bot candidatos
-Bot de cadastro de candidatos utilizando funcionalidades da BotCity.
+Bot de cadastro de candidatos utilizando funcionalidades da BotCity, com foco em processamento de itens em lote e paralelismo de execução através do Datapool.
 
 ## Requisitos criados no Orquestrador BotCity
 
@@ -14,7 +14,7 @@ Bot de cadastro de candidatos utilizando funcionalidades da BotCity.
 ### [Datapool](https://documentation.botcity.dev/pt/maestro/features/datapool/#criando-um-datapool)
 
 - Label:
-    - `dados_candidatos`
+    - `dados_cadastro`
 - Status:
     - `Ativo`
 - Política de consumo:
