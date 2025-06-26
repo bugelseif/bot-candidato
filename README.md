@@ -39,7 +39,9 @@ Bot de cadastro de candidatos utilizando funcionalidades da BotCity, com foco em
 
 ### [Carregar itens](https://documentation.botcity.dev/pt/maestro/features/datapool/#adicionando-itens-atraves-de-um-arquivo-csv)
 
-- Carregue os itens no Datapool `dados_candidatos` com base no arquivo `candidatos.csv` que está na pasta `resources`.
+Uma das formas de carregar itens para o Datapool é fazer upload, diretamente no Orquestrador, de um arquivo `.csv`.
+
+- Carregue os itens no Datapool `dados_cadastro` com base no arquivo `candidatos.csv` que está na pasta `resources`.
 
 ### [Build e Deploy](https://documentation.botcity.dev/pt/maestro/features/easy-deploy/)
 - Faça o build executando o arquivo `build.xxx` que está na raiz do projeto.
