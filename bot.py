@@ -1,6 +1,7 @@
 # Importe das bibliotecas utilizadas
 from botcity.maestro import *
 from botcity.web import Browser, By, WebBot
+from webdriver_manager.firefox import GeckoDriverManager
 
 BotMaestroSDK.RAISE_NOT_CONNECTED = False
 
@@ -27,7 +28,7 @@ def main():
     bot.browser = Browser.FIREFOX
 
     # Define o caminho do webdriver
-    bot.driver_path = bot.get_resource_abspath("geckodriver.exe")
+    bot.driver_path = GeckoDriverManager().install()
 
     # Contador de itens processados
     total_itens = 0
