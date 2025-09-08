@@ -40,12 +40,8 @@ def main():
         bot.browse("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login")
         bot.maximize_window()
 
-        # Obtendo credenciais armazenadas no Orquestrador
-        username = maestro.get_credential(label="login_orangehrm", key="username")
-        password = maestro.get_credential(label="login_orangehrm", key="password")
-
         # Função que faz o login
-        login(bot, username, password)
+        login(bot, maestro)
 
         # Navegar até a página de cadastro de candidatos
         element_recruitment = "li.oxd-main-menu-item-wrapper:nth-child(5) > a:nth-child(1)"
@@ -125,7 +121,7 @@ def main():
 
     finally:
         # Encerra o navegador e finaliza a execução
-        bot.wait(3000)
+        bot.wait(2000)
         bot.stop_browser()
 
         # Finalizando a tarefa e reportando os itens processados
@@ -139,20 +135,44 @@ def main():
         )
 
 
-def login(bot: WebBot, username, password):
+def login(bot: WebBot, maestro:BotMaestroSDK):
+    """Faz o login na plataforma OrangeHRM.
+
+    Args:
+        bot: Instancia do framework Web
+        maestro: Instancia de conexão com Orquestrador BotCity
+    """
+    
+    # Seletores dos elementos necessários para login
     element_user = "div.oxd-form-row:nth-child(2) > div:nth-child(1) > div:nth-child(2) > input:nth-child(1)"
     element_password = "div.oxd-form-row:nth-child(3) > div:nth-child(1) > div:nth-child(2) > input:nth-child(1)"
     element_button = ".oxd-button"
 
-    bot.wait(300)
-    bot.find_element(element_user, By.CSS_SELECTOR).send_keys(username)
-    bot.find_element(element_password, By.CSS_SELECTOR).send_keys(password)
-    bot.wait(300)
+    bot.wait(1000)
+    # Uso de credenciais armazenadas no Orquestrador BotCity
+    bot.find_element(
+        element_user, 
+        By.CSS_SELECTOR
+        ).send_keys(maestro.get_credential(label="login_orangehrm", key="username"))
+    bot.find_element(
+        element_password, 
+        By.CSS_SELECTOR
+        ).send_keys(maestro.get_credential(label="login_orangehrm", key="password"))
     bot.find_element(element_button, By.CSS_SELECTOR).click()
 
 
-def cadastro(bot: WebBot, candidato):
+def cadastro(bot: WebBot, item: DataPoolEntry):
+    """Faz o cadastro de um candidato na plataforma OrangeHRM.
+
+    Args:
+        bot: Instancia do framework Web
+        item: Informações de um candidato a ser cadastrado (full_name, vacancy, email, contact_number, keywords)
+    
+    Return:
+        bool
+    """
     try:
+        # Seletores dos elementos necessários para cadastro
         element_first_name = ".orangehrm-firstname"
         element_middle_name = ".orangehrm-middlename"
         element_last_name = ".orangehrm-lastname"
@@ -167,41 +187,31 @@ def cadastro(bot: WebBot, candidato):
         element_field_required = '//span[@class="oxd-text oxd-text--span oxd-input-field-error-message oxd-input-group__message"]'
 
         # Preenche as informações do candidato
-        primeiro_nome = candidato['full_name'].split(" ")[0]
-        nome_meio = candidato['full_name'].split(" ")[1]
-        ultimo_nome = candidato['full_name'].split(" ")[2:]
+        primeiro_nome = item['full_name'].split(" ")[0]
+        nome_meio = item['full_name'].split(" ")[1]
+        ultimo_nome = item['full_name'].split(" ")[2:]
 
         if ultimo_nome:
             bot.find_element(element_first_name, By.CSS_SELECTOR).send_keys(primeiro_nome)
-            bot.wait(300)
-
             bot.find_element(element_middle_name, By.CSS_SELECTOR).send_keys(nome_meio)
-            bot.wait(300)
-
             bot.find_element(element_last_name, By.CSS_SELECTOR).send_keys(ultimo_nome[-1])
-            bot.wait(300)
         else:
             bot.find_element(element_first_name, By.CSS_SELECTOR).send_keys(primeiro_nome)
-            bot.wait(300)
             bot.find_element(element_last_name, By.CSS_SELECTOR).send_keys(ultimo_nome[-1])
-            bot.wait(300)
 
         bot.find_element(element_vacancy, By.CSS_SELECTOR).click()
-        bot.wait(300)
+        bot.wait(500)
 
         options = bot.find_elements(element_options, By.CSS_SELECTOR)
         for option in options:
-            if option.text == candidato['vacancy']:
+            if option.text == item['vacancy']:
                 option.click()
                 bot.wait(300)
                 break
 
-        bot.find_element(element_email, By.CSS_SELECTOR).send_keys(candidato['email'])
-        bot.wait(300)
-        bot.find_element(element_contact, By.CSS_SELECTOR).send_keys(candidato['contact_number'])
-        bot.wait(300)
-        bot.find_element(element_keywords, By.CSS_SELECTOR).send_keys(candidato['keywords'])
-        bot.wait(300)
+        bot.find_element(element_email, By.CSS_SELECTOR).send_keys(item['email'])
+        bot.find_element(element_contact, By.CSS_SELECTOR).send_keys(item['contact_number'])
+        bot.find_element(element_keywords, By.CSS_SELECTOR).send_keys(item['keywords'])
 
         # Salvar
         bot.find_element(element_save, By.CSS_SELECTOR).click()
