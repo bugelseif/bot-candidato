@@ -51,7 +51,7 @@ def main():
         bot.find_element(element_add, By.CSS_SELECTOR).click()
 
         # Obtendo a referência do Datapool
-        datapool = maestro.get_datapool(label="label_datapool")
+        datapool = maestro.get_datapool(label="dados_cadastro")
 
         # Enquanto houverem itens para serem processados
         while datapool.has_next():
@@ -70,7 +70,9 @@ def main():
 
             if candidato_cadastrado:
                 # Reporta para o Datapool que o item foi processado com sucesso
-                item.report_done()
+                item.report_done(
+                    finish_message="Finilizado com sucesso."
+                )
 
                 # Soma ao contador de itens processados
                 itens_sucesso += 1
@@ -84,8 +86,11 @@ def main():
                     } 
                 )
             else:
-                # Reporta para o Datapool que ocorreu uma falha no processamento do item
-                item.report_error()
+                # Reporta o item como falha de negócios
+                item.report_error(
+                    error_type=ErrorType.BUSINESS,
+                    finish_message="Por motivos de negócios"
+                )
 
                 # Soma ao contador de itens com falha
                 itens_falhos += 1
@@ -109,6 +114,17 @@ def main():
             status = AutomationTaskFinishStatus.SUCCESS
 
     except Exception as e:
+        # Verifica se puxou um item para reportá-lo com erro de sistema
+        if item:
+            item.report_error(
+                error_type=ErrorType.SYSTEM,
+                finish_message="Por motivos de sistema"
+            )
+            # Soma ao contador de itens com falha
+            itens_falhos += 1
+        
+        # Faz captura de tela
+        bot.save_screenshot("captura.png")
         # Reportando erro para o Orquestrador
         maestro.error(
             task_id=execution.task_id,

@@ -1,21 +1,20 @@
-full_name,vacancy,email,contact_number,keywords
-Ana Beatriz Souza,Senior QA Lead,ana.beatriz.souza@email.com,(11) 98765-4321,"Empatia; Liderança; Comunicação"
-Carlos Eduardo Lima,Software Engineer,carlos.eduardo.lima@email.com,(21) 12345-6789,"Inovação; Tecnologia; Criatividade"
-Fernanda Martins Rocha,Junior Account Assistant,fernanda.martins.rocha@email.com,(31) 55555-1234,"Resiliência; Estratégia; Organização"
-Rodrigo Silva Santos,Payroll Administrator,rodrigo.silva.santos@email.com,(41) 87654-3210,"Analítico; Dedicado; Proativo"
-Juliana Moraes Pereira,Sales Representative,juliana.moraes.pereira@email.com,(51) 23456-7890,"Colaborativa; Adaptável; Visionária"
-Marcos Vinícius Oliveira,Senior QA Lead,marcos.vinicius.oliveira@email.com,(61) 98765-4321,"Motivação; Liderança; Engajamento"
-Sofia Carvalho Almeida,Senior Support Specialist,sofia.carvalho.almeida@email.com,(71) 12345-6789,"Criativa; Comunicativa; Inovadora"
-Bruno Henrique Figueiredo,Software Engineer,bruno.henrique.figueiredo@email.com,(81) 55555-1234,"Estratégico; Analítico; Responsável"
-Gabriela Ribeiro Gonçalves,Senior QA Lead,gabriela.ribeiro.goncalves@email.com,(91) 87654-3210,"Empática; Organizada; Líder"
-Felipe Araújo Costa,Software Engineer,felipe.araujo.costa@email.com,(12) 23456-7890,"Tecnológico; Inovador; Dedicado"
-Larissa Ferreira Barbosa,Junior Account Assistant,larissa.ferreira.barbosa@email.com,(13) 98765-4321,"Comunicativa; Colaborativa; Adaptável"
-Thiago Gomes Andrade,Payroll Administrator,thiago.gomes.andrade@email.com,(14) 12345-6789,"Motivado; Proativo; Visionário"
-Isabela Fonseca Moura,Sales Representative,isabela.fonseca.moura@email.com,(15) 55555-1234,"Criativa; Estratégica; Engajada"
-Rafael Dias Carvalho,Senior QA Lead,rafael.dias.carvalho@email.com,(16) 87654-3210,"Analítico; Responsável; Tecnológico"
-Patricia Lima Nogueira,Senior Support Specialist,patricia.lima.nogueira@email.com,(17) 23456-7890,"Liderança; Empatia; Organização"
-João Pedro Teixeira,Software Engineer,joao.pedro.teixeira@email.com,(18) 98765-4321,"Inovador; Dedicado; Comunicativo"
-Camila Pinto Machado,Senior QA Lead,camila.pinto.machado@email.com,(19) 12345-6789,"Adaptável; Colaborativa; Motivada"
-Lucas Alves Souza,Software Engineer,lucas.alves.souza@email.com,(20) 55555-1234,"Estratégico; Líder; Proativo"
-Beatriz Amaral Santos,Junior Account Assistant,beatriz.amaral.santos@email.com,(22) 87654-3210,"Criativa; Comunicativa;Empática"
-Henrique Duarte Pinheiro,Payroll Administrator,henrique.duarte.pinheiro@email.com,(24) 23456-7890,"Tecnológico; Analítico;Visionário"
+full_name,vacancy,email,contact_number,keywords,prioridade
+Ana Paula Oliveira,Senior QA Lead,ana.oliveira@email.com,(11) 11111-1111,"Gestão; Liderança; Comunicação",0
+Carlos Alberto Lima,Software Engineer,carlos.lima@email.com,(21) 22222-2222,"Inovação; Desenvolvimento; Tecnologia",0
+Mariana Dove Rocha,Junior Account Assistant,mariana.rocha@email.com,(31) 33333-3333,"Organização; Planejamento; Resiliência",0
+Pedro Loss Santos,Payroll Administrator,pedro.santos@email.com,(41) 44444-4444,"Analítico; Detalhista; Dedicado",0
+Aline Moreira Pereira,Sales Representative,aline.pereira@email.com,(51) 55555-5555,"Persuasão; Comunicação; Estratégia",0
+Rafael Dores Oliveira,Senior QA Lead,rafael.oliveira@email.com,(61) 66666-6666,"Liderança; Motivação; Qualidade",0
+Juliana Torres Almeida,Senior Support Specialist,juliana.almeida@email.com,(71) 77777-7777,"Empatia; Suporte; Solução",0
+Lucas Norton Figueiredo,Software Engineer,lucas.figueiredo@email.com,(81) 88888-8888,"Criatividade; Análise; Desenvolvimento",0
+Fernanda Bolsa Gonçalves,Senior QA Lead,fernanda.goncalves@email.com,(91) 99999-9999,"Organização; Liderança; Empatia",0
+Bruno Pera Costa,Software Engineer,bruno.costa@email.com,(12) 10101-1010,"Tecnologia; Inovação; Proatividade",0
+Patricia Barbosa,Junior Account Assistant,patricia.barbosa@email.com,(13) 20202-2020,"Colaboração; Comunicação; Adaptabilidade",0
+Thiago Niss Andrade,Payroll Administrator,thiago.andrade@email.com,(14) 30303-3030,"Proatividade; Organização; Foco",0
+Isabela Polos Moura,Sales Representative,isabela.moura@email.com,(15) 40404-4040,"Criatividade; Estratégia; Comunicação",0
+Gabriel Monteiro Carvalho,Senior QA Lead,gabriel.carvalho@email.com,(16) 50505-5050,"Qualidade; Liderança; Análise",0
+Camila Neves Nogueira,Senior Support Specialist,camila.nogueira@email.com,(17) 60606-6060,"Empatia; Organização; Suporte",0
+João Machado,Software Engineer,joao.machado@email.com,(18) 70707-7070,"Desenvolvimento; Inovação; Comunicação",0
+Larissa Souza,Senior QA Lead,larissa.souza@email.com,(19) 80808-8080,"Liderança; Motivação; Colaboração",0
+Felipe Fogos Santos,Software Engineer,felipe.santos@email.com,(20) 90909-9090,"Estratégia; Proatividade; Tecnologia",0
+Beatriz Almeida,Junior Account Assistant,beatriz.almeida@email.com,(22) 12121-1212,"Resiliência; Comunicação; Organização",0

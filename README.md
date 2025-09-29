@@ -13,21 +13,27 @@ Bot de cadastro de candidatos utilizando funcionalidades da BotCity, com foco em
 
 ### [Datapool](https://documentation.botcity.dev/pt/maestro/features/datapool/#criando-um-datapool)
 
-- Label:
-    - `dados_cadastro`
-- Status:
-    - `Ativo`
-- Política de consumo:
-    - `FIFO`
-- Gatilho:
-    - `Nunca`
+- Datapool:
+    - Label:
+        - `dados_cadastro`
+    - Nome:
+        - `Dados de cadastro`
+    - Status:
+        - `Ativo`
+    - Política de consumo:
+        - `FIFO`
+- Processamento:
+    - Abortar em caso de erro:
+        - `Habilitar` 
+        - `3 erros`
+    - Disparo de tarefas:
+        - `Nunca disparar nova tarefa`
 - Schema (como está no csv):
-    - `full_name` - `string`
-    - `vacancy` - `string`
-    - `email` - `string`
-    - `contact_number` - `string`
-    - `keywords` - `string`
-- (restante dos campos preenchidos conforme quiser)
+    - `full_name` | `TEXT` | `Exibir valor`
+    - `vacancy` | `TEXT`
+    - `email` | `TEXT` | `ID único`
+    - `contact_number` | `TEXT`
+    - `keywords` | `TEXT`
 
 ### [Log de execução](https://documentation.botcity.dev/pt/maestro/features/logs/#criando-um-log-de-execucao)
 
@@ -52,7 +58,7 @@ Uma das formas de carregar itens para o Datapool é fazer upload, diretamente no
 ## Para testes locais
 
 ### Refatoração
-Para rodar localmente, é necessário refatorar o código para que ele possa se comunicar com o Orquestrador BotCity.
+Para executar localmente, é necessário refatorar o código para que ele possa se comunicar com o Orquestrador BotCity.
 
 #### [Método login](https://documentation.botcity.dev/pt/maestro/maestro-sdk/setup/#utilizando-as-informacoes-do-workspace)
 
