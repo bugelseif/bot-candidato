@@ -21,7 +21,7 @@ def main():
     # Instancia do bot
     bot = WebBot()
 
-    # Configura o modo headless para False
+    # Configura o modo headless para True
     bot.headless = True
 
     # Define o navegador a ser utilizado
@@ -77,14 +77,6 @@ def main():
                 # Soma ao contador de itens processados
                 itens_sucesso += 1
 
-                # Registrando uma entrada de log com o status do cadastro do candidato
-                maestro.new_log_entry(
-                    activity_label="controle_cadastro",
-                    values = {
-                        "nome": item.get_value("full_name"),
-                        "status": "Sucesso"
-                    } 
-                )
             else:
                 # Reporta o item como falha de negócios
                 item.report_error(
@@ -94,15 +86,6 @@ def main():
 
                 # Soma ao contador de itens com falha
                 itens_falhos += 1
-
-                # Registrando uma entrada de log com o status do cadastro do candidato
-                maestro.new_log_entry(
-                    activity_label="controle_cadastro",
-                    values = {
-                        "nome": item.get_value("full_name"),
-                        "status": "Falha - dados incompletos"
-                    } 
-                )
 
         if itens_falhos > 0:
             # Define o status de finalização da tarefa
@@ -114,17 +97,12 @@ def main():
             status = AutomationTaskFinishStatus.SUCCESS
 
     except Exception as e:
-        # Verifica se puxou um item para reportá-lo com erro de sistema
+        bot.save_screenshot("captura.png")
         if item:
             item.report_error(
-                error_type=ErrorType.SYSTEM,
-                finish_message="Por motivos de sistema"
-            )
-            # Soma ao contador de itens com falha
-            itens_falhos += 1
-        
-        # Faz captura de tela
-        bot.save_screenshot("captura.png")
+                    error_type=ErrorType.SYSTEM,
+                    finish_message="Por motivos de sistema"
+                )
         # Reportando erro para o Orquestrador
         maestro.error(
             task_id=execution.task_id,
@@ -210,10 +188,10 @@ def cadastro(bot: WebBot, item: DataPoolEntry):
         if ultimo_nome:
             bot.find_element(element_first_name, By.CSS_SELECTOR).send_keys(primeiro_nome)
             bot.find_element(element_middle_name, By.CSS_SELECTOR).send_keys(nome_meio)
-            bot.find_element(element_last_name, By.CSS_SELECTOR).send_keys(ultimo_nome[-1])
+            bot.find_element(element_last_name, By.CSS_SELECTOR).send_keys(" ".join(ultimo_nome))
         else:
             bot.find_element(element_first_name, By.CSS_SELECTOR).send_keys(primeiro_nome)
-            bot.find_element(element_last_name, By.CSS_SELECTOR).send_keys(ultimo_nome[-1])
+            bot.find_element(element_last_name, By.CSS_SELECTOR).send_keys(nome_meio)
 
         bot.find_element(element_vacancy, By.CSS_SELECTOR).click()
         bot.wait(500)
